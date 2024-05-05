@@ -30,6 +30,7 @@ local NoRagdoll = Instance.new("Frame")
 local Btn_6 = Instance.new("TextButton")
 local Title_6 = Instance.new("TextLabel")
 local UICorner_7 = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
 
 -- Properties:
 
@@ -42,8 +43,8 @@ Frame.Parent = Gui
 Frame.BackgroundColor3 = Color3.fromRGB(29, 30, 48)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.0195178408, 0, 0.585820913, 0)
-Frame.Size = UDim2.new(0.256320834, 0, 0.391791046, 0)
+Frame.Position = UDim2.new(0.0191804711, 0, 0.585820913, 0)
+Frame.Size = UDim2.new(0, 294, 0, 315)
 
 UICorner.CornerRadius = UDim.new(0, 5)
 UICorner.Parent = Frame
@@ -71,6 +72,7 @@ ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ScrollingFrame.BorderSizePixel = 0
 ScrollingFrame.Position = UDim2.new(0, 0, 0.0634920672, 0)
 ScrollingFrame.Size = UDim2.new(1, 0, 0.93650794, 0)
+ScrollingFrame.Visible = false
 ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
 
 UnFreeze.Name = "UnFreeze"
@@ -290,9 +292,23 @@ Title_6.TextSize = 20.000
 
 UICorner_7.Parent = NoRagdoll
 
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.0340136066, 0, 0.0634920672, 0)
+TextLabel.Size = UDim2.new(0, 274, 0, 44)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "You need to reset first."
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
 -- Scripts:
 
-local function TBKF_fake_script() -- Frame.Dragable 
+local function RYVM_fake_script() -- Frame.Dragable 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -332,179 +348,154 @@ local function TBKF_fake_script() -- Frame.Dragable
 		end
 	end)
 end
-coroutine.wrap(TBKF_fake_script)()
-local function AWEXEDC_fake_script() -- Close.LocalScript 
+coroutine.wrap(RYVM_fake_script)()
+local function KELI_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(AWEXEDC_fake_script)()
-local function YUYPIZ_fake_script() -- Btn.LocalScript 
+coroutine.wrap(KELI_fake_script)()
+local function DGVAV_fake_script() -- Btn.LocalScript 
 	local script = Instance.new('LocalScript', Btn)
 
 	local open = false
 	local plr = game.Players.LocalPlayer
-	local character = plr.Character or plr.CharacterAdded:Wait()
-	local cold = false
-	
-	local tweenService = game.TweenService
-	
-	--tweens
+	local tweenService = game:GetService("TweenService")
 	
 	local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 	local tweenOn = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(85, 255, 127) })
 	local tweenOff = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
 	
-	script.Parent.MouseButton1Click:Connect(function()
-		if not open and not cold then
+	local function ToggleButton()
+		if not open then
 			open = true
-			cold = true
-		
 			tweenOn:Play()
-			tweenOn.Completed:Wait()
-			cold = false
-		elseif open and not cold then
+		elseif open then
 			open = false
-			cold = true
-			
 			tweenOff:Play()
-			tweenOff.Completed:Wait()
-			cold = false
 		end
-	end)
+	end
 	
-	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
-		if child.Name == "Freeze" and open then
-			child.Name = " " 
-		end
+	script.Parent.MouseButton1Click:Connect(ToggleButton)
+	
+	plr.CharacterAdded:Connect(function(character)
+		wait()
+		character:WaitForChild("HumanoidRootPart")
+		character.ChildAdded:Connect(function(child)
+			if child.Name == "Freeze" and open then
+				child.Name = " " 
+			end
+		end)
 	end)
 end
-coroutine.wrap(YUYPIZ_fake_script)()
-local function SYHE_fake_script() -- Btn_2.LocalScript 
+coroutine.wrap(DGVAV_fake_script)()
+local function UYKOB_fake_script() -- Btn_2.LocalScript 
 	local script = Instance.new('LocalScript', Btn_2)
 
 	local open = false
 	local plr = game.Players.LocalPlayer
-	local cold = false
-	
-	local tweenService = game.TweenService
-	
-	--tweens
+	local tweenService = game:GetService("TweenService")
 	
 	local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 	local tweenOn = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(85, 255, 127) })
 	local tweenOff = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
 	
-	script.Parent.MouseButton1Click:Connect(function()
-		if not open and not cold then
+	local function ToggleButton()
+		if not open then
 			open = true
-			cold = true
-		
 			tweenOn:Play()
-			tweenOn.Completed:Wait()
-			cold = false
-		elseif open and not cold then
+		elseif open then
 			open = false
-			cold = true
-			
 			tweenOff:Play()
-			tweenOff.Completed:Wait()
-			cold = false
 		end
-	end)
+	end
 	
-	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
-		if child.Name == "Slowed" and open then
-			child.Name = " "
-		elseif child.Name == "StopRunning" and open then
-			child.Name = " "
-		end
+	script.Parent.MouseButton1Click:Connect(ToggleButton)
+	
+	plr.CharacterAdded:Connect(function(character)
+		wait()
+		character:WaitForChild("HumanoidRootPart")
+		character.ChildAdded:Connect(function(child)
+			if child.Name == "Slowed" and open then
+				child.Name = " "
+			elseif child.Name == "StopRunning" and open then
+				child.Name = " "
+			end
+		end)
 	end)
 end
-coroutine.wrap(SYHE_fake_script)()
-local function WVHM_fake_script() -- Btn_3.LocalScript 
+coroutine.wrap(UYKOB_fake_script)()
+local function MLUV_fake_script() -- Btn_3.LocalScript 
 	local script = Instance.new('LocalScript', Btn_3)
 
 	local open = false
-	local cold = false
-	
-	local tweenService = game.TweenService
-	
-	--tweens
+	local plr = game.Players.LocalPlayer
+	local tweenService = game:GetService("TweenService")
 	
 	local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 	local tweenOn = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(85, 255, 127) })
 	local tweenOff = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
 	
-	script.Parent.MouseButton1Click:Connect(function()
-		if not open and not cold then
+	local function ToggleButton()
+		if not open then
 			open = true
-			cold = true
-		
 			tweenOn:Play()
-			tweenOn.Completed:Wait()
-			cold = false
-		elseif open and not cold then
+		elseif open then
 			open = false
-			cold = true
-			
 			tweenOff:Play()
-			tweenOff.Completed:Wait()
-			cold = false
 		end
-	end)
+	end
 	
-	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
-		if child.Name == "NoBlock" and open then
-			child.Name = " "
-		end
+	script.Parent.MouseButton1Click:Connect(ToggleButton)
+	
+	plr.CharacterAdded:Connect(function(character)
+		wait()
+		character:WaitForChild("HumanoidRootPart")
+		character.ChildAdded:Connect(function(child)
+			if child.Name == "NoBlock" and open then
+				child.Name = " " 
+			end
+		end)
 	end)
 end
-coroutine.wrap(WVHM_fake_script)()
-local function KXRWJMY_fake_script() -- Btn_4.LocalScript 
+coroutine.wrap(MLUV_fake_script)()
+local function VUNGM_fake_script() -- Btn_4.LocalScript 
 	local script = Instance.new('LocalScript', Btn_4)
 
 	local open = false
 	local plr = game.Players.LocalPlayer
-	local character = plr.Character or plr.CharacterAdded:Wait()
-	local cold = false
-	
-	local tweenService = game.TweenService
-	
-	--tweens
+	local tweenService = game:GetService("TweenService")
 	
 	local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 	local tweenOn = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(85, 255, 127) })
 	local tweenOff = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
 	
-	script.Parent.MouseButton1Click:Connect(function()
-		if not open and not cold then
+	local function ToggleButton()
+		if not open then
 			open = true
-			cold = true
-		
 			tweenOn:Play()
-			tweenOn.Completed:Wait()
-			cold = false
-		elseif open and not cold then
+		elseif open then
 			open = false
-			cold = true
-			
 			tweenOff:Play()
-			tweenOff.Completed:Wait()
-			cold = false
 		end
-	end)
+	end
 	
-	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
-		if child.Name == "NoJump" and open then
-			child.Name = " "
-		end
+	script.Parent.MouseButton1Click:Connect(ToggleButton)
+	
+	plr.CharacterAdded:Connect(function(character)
+		wait()
+		character:WaitForChild("HumanoidRootPart")
+		character.ChildAdded:Connect(function(child)
+			if child.Name == "NoJump" and open then
+				child.Name = " " 
+			end
+		end)
 	end)
 end
-coroutine.wrap(KXRWJMY_fake_script)()
-local function CLZTJSG_fake_script() -- Btn_5.LocalScript 
+coroutine.wrap(VUNGM_fake_script)()
+local function LQTCYDI_fake_script() -- Btn_5.LocalScript 
 	local script = Instance.new('LocalScript', Btn_5)
 
 	script.Parent.MouseButton1Click:Connect(function()
@@ -518,44 +509,53 @@ local function CLZTJSG_fake_script() -- Btn_5.LocalScript
 		game.Players.LocalPlayer.Character:MoveTo(trashcan.Trashcan.Position)
 	end)
 end
-coroutine.wrap(CLZTJSG_fake_script)()
-local function OMZZ_fake_script() -- Btn_6.LocalScript 
+coroutine.wrap(LQTCYDI_fake_script)()
+local function JHIDGVF_fake_script() -- Btn_6.LocalScript 
 	local script = Instance.new('LocalScript', Btn_6)
 
 	local open = false
 	local plr = game.Players.LocalPlayer
-	local cold = false
-	
-	local tweenService = game.TweenService
-	
-	--tweens
+	local tweenService = game:GetService("TweenService")
 	
 	local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 	local tweenOn = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(85, 255, 127) })
 	local tweenOff = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
 	
-	script.Parent.MouseButton1Click:Connect(function()
-		if not open and not cold then
+	local function ToggleButton()
+		if not open then
 			open = true
-			cold = true
-		
 			tweenOn:Play()
-			tweenOn.Completed:Wait()
-			cold = false
-		elseif open and not cold then
+		elseif open then
 			open = false
-			cold = true
-			
 			tweenOff:Play()
-			tweenOff.Completed:Wait()
-			cold = false
 		end
-	end)
+	end
 	
-	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
-		if child.Name == "Ragdoll" and open then
-			child.Name = " "
-		end
+	script.Parent.MouseButton1Click:Connect(ToggleButton)
+	
+	plr.CharacterAdded:Connect(function(character)
+		wait()
+		character:WaitForChild("HumanoidRootPart")
+		character.ChildAdded:Connect(function(child)
+			if child.Name == "Ragdoll" and open then
+				child.Name = " "
+			end
+		end)
 	end)
 end
-coroutine.wrap(OMZZ_fake_script)()
+coroutine.wrap(JHIDGVF_fake_script)()
+local function LSDT_fake_script() -- TextLabel.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel)
+
+	if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+		game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+	end
+	
+	game.Players.LocalPlayer.CharacterAdded:Connect(function()
+		script.Parent.Visible = false
+		script.Parent.Parent.ScrollingFrame.Visible = true
+		wait()
+		script.Parent:Destroy()
+	end)
+end
+coroutine.wrap(LSDT_fake_script)()
