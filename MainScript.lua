@@ -22,6 +22,10 @@ local CanJump = Instance.new("Frame")
 local Btn_4 = Instance.new("TextButton")
 local Title_4 = Instance.new("TextLabel")
 local UICorner_5 = Instance.new("UICorner")
+local FindTrashCan = Instance.new("Frame")
+local Btn_5 = Instance.new("TextButton")
+local Title_5 = Instance.new("TextLabel")
+local UICorner_6 = Instance.new("UICorner")
 
 -- Properties:
 
@@ -210,9 +214,46 @@ Title_4.TextSize = 20.000
 
 UICorner_5.Parent = CanJump
 
+FindTrashCan.Name = "FindTrashCan"
+FindTrashCan.Parent = ScrollingFrame
+FindTrashCan.BackgroundColor3 = Color3.fromRGB(74, 68, 117)
+FindTrashCan.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FindTrashCan.BorderSizePixel = 0
+FindTrashCan.Position = UDim2.new(0.0816326514, 0, 0.0412698425, 0)
+FindTrashCan.Size = UDim2.new(0, 246, 0, 30)
+
+Btn_5.Name = "Btn"
+Btn_5.Parent = FindTrashCan
+Btn_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Btn_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Btn_5.BorderSizePixel = 0
+Btn_5.Position = UDim2.new(0.0344284177, 0, 0.157143146, 0)
+Btn_5.Size = UDim2.new(0, 20, 0, 20)
+Btn_5.Font = Enum.Font.SourceSans
+Btn_5.Text = " "
+Btn_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+Btn_5.TextSize = 14.000
+
+Title_5.Name = "Title"
+Title_5.Parent = FindTrashCan
+Title_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_5.BackgroundTransparency = 1.000
+Title_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title_5.BorderSizePixel = 0
+Title_5.Position = UDim2.new(0.142276421, 0, 0, 0)
+Title_5.Size = UDim2.new(0, 211, 0, 30)
+Title_5.Font = Enum.Font.Gotham
+Title_5.Text = "Go to a random trashcan"
+Title_5.TextColor3 = Color3.fromRGB(117, 177, 255)
+Title_5.TextScaled = true
+Title_5.TextSize = 20.000
+Title_5.TextWrapped = true
+
+UICorner_6.Parent = FindTrashCan
+
 -- Scripts:
 
-local function VEBHJNM_fake_script() -- Frame.Dragable 
+local function PWYZRXZ_fake_script() -- Frame.Dragable 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -252,16 +293,16 @@ local function VEBHJNM_fake_script() -- Frame.Dragable
 		end
 	end)
 end
-coroutine.wrap(VEBHJNM_fake_script)()
-local function YWUY_fake_script() -- Close.LocalScript 
+coroutine.wrap(PWYZRXZ_fake_script)()
+local function HAEUB_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(YWUY_fake_script)()
-local function MJVNXA_fake_script() -- Btn.LocalScript 
+coroutine.wrap(HAEUB_fake_script)()
+local function LVGSOMJ_fake_script() -- Btn.LocalScript 
 	local script = Instance.new('LocalScript', Btn)
 
 	local open = false
@@ -301,8 +342,8 @@ local function MJVNXA_fake_script() -- Btn.LocalScript
 		end
 	end)
 end
-coroutine.wrap(MJVNXA_fake_script)()
-local function EUPHR_fake_script() -- Btn_2.LocalScript 
+coroutine.wrap(LVGSOMJ_fake_script)()
+local function EMXX_fake_script() -- Btn_2.LocalScript 
 	local script = Instance.new('LocalScript', Btn_2)
 
 	local open = false
@@ -344,8 +385,8 @@ local function EUPHR_fake_script() -- Btn_2.LocalScript
 		end
 	end)
 end
-coroutine.wrap(EUPHR_fake_script)()
-local function PIBYLE_fake_script() -- Btn_3.LocalScript 
+coroutine.wrap(EMXX_fake_script)()
+local function AEBRDPC_fake_script() -- Btn_3.LocalScript 
 	local script = Instance.new('LocalScript', Btn_3)
 
 	local open = false
@@ -385,8 +426,8 @@ local function PIBYLE_fake_script() -- Btn_3.LocalScript
 		end
 	end)
 end
-coroutine.wrap(PIBYLE_fake_script)()
-local function LLXZBPE_fake_script() -- Btn_4.LocalScript 
+coroutine.wrap(AEBRDPC_fake_script)()
+local function BJIS_fake_script() -- Btn_4.LocalScript 
 	local script = Instance.new('LocalScript', Btn_4)
 
 	local open = false
@@ -426,4 +467,22 @@ local function LLXZBPE_fake_script() -- Btn_4.LocalScript
 		end
 	end)
 end
-coroutine.wrap(LLXZBPE_fake_script)()
+coroutine.wrap(BJIS_fake_script)()
+local function MCCNXB_fake_script() -- Btn_5.LocalScript 
+	local script = Instance.new('LocalScript', Btn_5)
+
+	local plr = game.Players.LocalPlayer
+	local character = plr.Character or plr.CharacterAdded:Wait()
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		local fol = game.Workspace.Map.Trash
+		local trashcan = nil
+		
+		for i,v in ipairs(fol:GetChildren()) do
+			if v:FindFirstChild("Trashcan").Transparency == 0 then trashcan = v break end
+		end
+		
+		character:MoveTo(trashcan.Trashcan.Position)
+	end)
+end
+coroutine.wrap(MCCNXB_fake_script)()
