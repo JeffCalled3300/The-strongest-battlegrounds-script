@@ -26,6 +26,10 @@ local FindTrashCan = Instance.new("Frame")
 local Btn_5 = Instance.new("TextButton")
 local Title_5 = Instance.new("TextLabel")
 local UICorner_6 = Instance.new("UICorner")
+local NoRagdoll = Instance.new("Frame")
+local Btn_6 = Instance.new("TextButton")
+local Title_6 = Instance.new("TextLabel")
+local UICorner_7 = Instance.new("UICorner")
 
 -- Properties:
 
@@ -251,9 +255,44 @@ Title_5.TextWrapped = true
 
 UICorner_6.Parent = FindTrashCan
 
+NoRagdoll.Name = "NoRagdoll"
+NoRagdoll.Parent = ScrollingFrame
+NoRagdoll.BackgroundColor3 = Color3.fromRGB(74, 68, 117)
+NoRagdoll.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NoRagdoll.BorderSizePixel = 0
+NoRagdoll.Position = UDim2.new(0.0816326514, 0, 0.0412698425, 0)
+NoRagdoll.Size = UDim2.new(0, 246, 0, 30)
+
+Btn_6.Name = "Btn"
+Btn_6.Parent = NoRagdoll
+Btn_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Btn_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Btn_6.BorderSizePixel = 0
+Btn_6.Position = UDim2.new(0.0344284177, 0, 0.157143146, 0)
+Btn_6.Size = UDim2.new(0, 20, 0, 20)
+Btn_6.Font = Enum.Font.SourceSans
+Btn_6.Text = " "
+Btn_6.TextColor3 = Color3.fromRGB(0, 0, 0)
+Btn_6.TextSize = 14.000
+
+Title_6.Name = "Title"
+Title_6.Parent = NoRagdoll
+Title_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_6.BackgroundTransparency = 1.000
+Title_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title_6.BorderSizePixel = 0
+Title_6.Position = UDim2.new(0.142276421, 0, 0, 0)
+Title_6.Size = UDim2.new(0, 211, 0, 30)
+Title_6.Font = Enum.Font.Gotham
+Title_6.Text = "Never ragdoll"
+Title_6.TextColor3 = Color3.fromRGB(117, 177, 255)
+Title_6.TextSize = 20.000
+
+UICorner_7.Parent = NoRagdoll
+
 -- Scripts:
 
-local function PWYZRXZ_fake_script() -- Frame.Dragable 
+local function CKARD_fake_script() -- Frame.Dragable 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -293,16 +332,16 @@ local function PWYZRXZ_fake_script() -- Frame.Dragable
 		end
 	end)
 end
-coroutine.wrap(PWYZRXZ_fake_script)()
-local function HAEUB_fake_script() -- Close.LocalScript 
+coroutine.wrap(CKARD_fake_script)()
+local function WECQT_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(HAEUB_fake_script)()
-local function LVGSOMJ_fake_script() -- Btn.LocalScript 
+coroutine.wrap(WECQT_fake_script)()
+local function CJUP_fake_script() -- Btn.LocalScript 
 	local script = Instance.new('LocalScript', Btn)
 
 	local open = false
@@ -336,19 +375,18 @@ local function LVGSOMJ_fake_script() -- Btn.LocalScript
 		end
 	end)
 	
-	character.ChildAdded:Connect(function(child)
+	plr.Character.ChildAdded:Connect(function(child)
 		if child.Name == "Freeze" and open then
 			child.Name = " " 
 		end
 	end)
 end
-coroutine.wrap(LVGSOMJ_fake_script)()
-local function EMXX_fake_script() -- Btn_2.LocalScript 
+coroutine.wrap(CJUP_fake_script)()
+local function SNFAFQ_fake_script() -- Btn_2.LocalScript 
 	local script = Instance.new('LocalScript', Btn_2)
 
 	local open = false
 	local plr = game.Players.LocalPlayer
-	local character = plr.Character or plr.CharacterAdded:Wait()
 	local cold = false
 	
 	local tweenService = game.TweenService
@@ -377,7 +415,7 @@ local function EMXX_fake_script() -- Btn_2.LocalScript
 		end
 	end)
 	
-	character.ChildAdded:Connect(function(child)
+	plr.Character.ChildAdded:Connect(function(child)
 		if child.Name == "Slowed" and open then
 			child.Name = " "
 		elseif child.Name == "StopRunning" and open then
@@ -385,8 +423,8 @@ local function EMXX_fake_script() -- Btn_2.LocalScript
 		end
 	end)
 end
-coroutine.wrap(EMXX_fake_script)()
-local function AEBRDPC_fake_script() -- Btn_3.LocalScript 
+coroutine.wrap(SNFAFQ_fake_script)()
+local function YJPYQ_fake_script() -- Btn_3.LocalScript 
 	local script = Instance.new('LocalScript', Btn_3)
 
 	local open = false
@@ -420,14 +458,14 @@ local function AEBRDPC_fake_script() -- Btn_3.LocalScript
 		end
 	end)
 	
-	character.ChildAdded:Connect(function(child)
+	plr.Character.ChildAdded:Connect(function(child)
 		if child.Name == "NoBlock" and open then
 			child.Name = " "
 		end
 	end)
 end
-coroutine.wrap(AEBRDPC_fake_script)()
-local function BJIS_fake_script() -- Btn_4.LocalScript 
+coroutine.wrap(YJPYQ_fake_script)()
+local function QFHJDY_fake_script() -- Btn_4.LocalScript 
 	local script = Instance.new('LocalScript', Btn_4)
 
 	local open = false
@@ -461,18 +499,17 @@ local function BJIS_fake_script() -- Btn_4.LocalScript
 		end
 	end)
 	
-	character.ChildAdded:Connect(function(child)
+	plr.Character.ChildAdded:Connect(function(child)
 		if child.Name == "NoJump" and open then
 			child.Name = " "
 		end
 	end)
 end
-coroutine.wrap(BJIS_fake_script)()
-local function MCCNXB_fake_script() -- Btn_5.LocalScript 
+coroutine.wrap(QFHJDY_fake_script)()
+local function UGWHA_fake_script() -- Btn_5.LocalScript 
 	local script = Instance.new('LocalScript', Btn_5)
 
 	local plr = game.Players.LocalPlayer
-	local character = plr.Character or plr.CharacterAdded:Wait()
 	
 	script.Parent.MouseButton1Click:Connect(function()
 		local fol = game.Workspace.Map.Trash
@@ -482,7 +519,47 @@ local function MCCNXB_fake_script() -- Btn_5.LocalScript
 			if v:FindFirstChild("Trashcan").Transparency == 0 then trashcan = v break end
 		end
 		
-		character:MoveTo(trashcan.Trashcan.Position)
+		plr.Character:MoveTo(trashcan.Trashcan.Position)
 	end)
 end
-coroutine.wrap(MCCNXB_fake_script)()
+coroutine.wrap(UGWHA_fake_script)()
+local function YLQB_fake_script() -- Btn_6.LocalScript 
+	local script = Instance.new('LocalScript', Btn_6)
+
+	local open = false
+	local plr = game.Players.LocalPlayer
+	local cold = false
+	
+	local tweenService = game.TweenService
+	
+	--tweens
+	
+	local tweeninfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+	local tweenOn = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(85, 255, 127) })
+	local tweenOff = tweenService:Create(script.Parent, tweeninfo, { BackgroundColor3 = Color3.fromRGB(255, 255, 255) })
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if not open and not cold then
+			open = true
+			cold = true
+		
+			tweenOn:Play()
+			tweenOn.Completed:Wait()
+			cold = false
+		elseif open and not cold then
+			open = false
+			cold = true
+			
+			tweenOff:Play()
+			tweenOff.Completed:Wait()
+			cold = false
+		end
+	end)
+	
+	plr.Character.ChildAdded:Connect(function(child)
+		if child.Name == "Ragdoll" and open then
+			child.Name = " "
+		end
+	end)
+end
+coroutine.wrap(YLQB_fake_script)()
