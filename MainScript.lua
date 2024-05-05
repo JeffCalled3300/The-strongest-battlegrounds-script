@@ -43,7 +43,7 @@ Frame.BackgroundColor3 = Color3.fromRGB(29, 30, 48)
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0.0195178408, 0, 0.585820913, 0)
-Frame.Size = UDim2.new(0, 294, 0, 315)
+Frame.Size = UDim2.new(0.256320834, 0, 0.391791046, 0)
 
 UICorner.CornerRadius = UDim.new(0, 5)
 UICorner.Parent = Frame
@@ -292,7 +292,7 @@ UICorner_7.Parent = NoRagdoll
 
 -- Scripts:
 
-local function CKARD_fake_script() -- Frame.Dragable 
+local function TBKF_fake_script() -- Frame.Dragable 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -332,16 +332,16 @@ local function CKARD_fake_script() -- Frame.Dragable
 		end
 	end)
 end
-coroutine.wrap(CKARD_fake_script)()
-local function WECQT_fake_script() -- Close.LocalScript 
+coroutine.wrap(TBKF_fake_script)()
+local function AWEXEDC_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(WECQT_fake_script)()
-local function CJUP_fake_script() -- Btn.LocalScript 
+coroutine.wrap(AWEXEDC_fake_script)()
+local function YUYPIZ_fake_script() -- Btn.LocalScript 
 	local script = Instance.new('LocalScript', Btn)
 
 	local open = false
@@ -375,14 +375,14 @@ local function CJUP_fake_script() -- Btn.LocalScript
 		end
 	end)
 	
-	plr.Character.ChildAdded:Connect(function(child)
+	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
 		if child.Name == "Freeze" and open then
 			child.Name = " " 
 		end
 	end)
 end
-coroutine.wrap(CJUP_fake_script)()
-local function SNFAFQ_fake_script() -- Btn_2.LocalScript 
+coroutine.wrap(YUYPIZ_fake_script)()
+local function SYHE_fake_script() -- Btn_2.LocalScript 
 	local script = Instance.new('LocalScript', Btn_2)
 
 	local open = false
@@ -415,7 +415,7 @@ local function SNFAFQ_fake_script() -- Btn_2.LocalScript
 		end
 	end)
 	
-	plr.Character.ChildAdded:Connect(function(child)
+	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
 		if child.Name == "Slowed" and open then
 			child.Name = " "
 		elseif child.Name == "StopRunning" and open then
@@ -423,13 +423,11 @@ local function SNFAFQ_fake_script() -- Btn_2.LocalScript
 		end
 	end)
 end
-coroutine.wrap(SNFAFQ_fake_script)()
-local function YJPYQ_fake_script() -- Btn_3.LocalScript 
+coroutine.wrap(SYHE_fake_script)()
+local function WVHM_fake_script() -- Btn_3.LocalScript 
 	local script = Instance.new('LocalScript', Btn_3)
 
 	local open = false
-	local plr = game.Players.LocalPlayer
-	local character = plr.Character or plr.CharacterAdded:Wait()
 	local cold = false
 	
 	local tweenService = game.TweenService
@@ -458,14 +456,14 @@ local function YJPYQ_fake_script() -- Btn_3.LocalScript
 		end
 	end)
 	
-	plr.Character.ChildAdded:Connect(function(child)
+	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
 		if child.Name == "NoBlock" and open then
 			child.Name = " "
 		end
 	end)
 end
-coroutine.wrap(YJPYQ_fake_script)()
-local function QFHJDY_fake_script() -- Btn_4.LocalScript 
+coroutine.wrap(WVHM_fake_script)()
+local function KXRWJMY_fake_script() -- Btn_4.LocalScript 
 	local script = Instance.new('LocalScript', Btn_4)
 
 	local open = false
@@ -499,18 +497,16 @@ local function QFHJDY_fake_script() -- Btn_4.LocalScript
 		end
 	end)
 	
-	plr.Character.ChildAdded:Connect(function(child)
+	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
 		if child.Name == "NoJump" and open then
 			child.Name = " "
 		end
 	end)
 end
-coroutine.wrap(QFHJDY_fake_script)()
-local function UGWHA_fake_script() -- Btn_5.LocalScript 
+coroutine.wrap(KXRWJMY_fake_script)()
+local function CLZTJSG_fake_script() -- Btn_5.LocalScript 
 	local script = Instance.new('LocalScript', Btn_5)
 
-	local plr = game.Players.LocalPlayer
-	
 	script.Parent.MouseButton1Click:Connect(function()
 		local fol = game.Workspace.Map.Trash
 		local trashcan = nil
@@ -519,11 +515,11 @@ local function UGWHA_fake_script() -- Btn_5.LocalScript
 			if v:FindFirstChild("Trashcan").Transparency == 0 then trashcan = v break end
 		end
 		
-		plr.Character:MoveTo(trashcan.Trashcan.Position)
+		game.Players.LocalPlayer.Character:MoveTo(trashcan.Trashcan.Position)
 	end)
 end
-coroutine.wrap(UGWHA_fake_script)()
-local function YLQB_fake_script() -- Btn_6.LocalScript 
+coroutine.wrap(CLZTJSG_fake_script)()
+local function OMZZ_fake_script() -- Btn_6.LocalScript 
 	local script = Instance.new('LocalScript', Btn_6)
 
 	local open = false
@@ -556,10 +552,10 @@ local function YLQB_fake_script() -- Btn_6.LocalScript
 		end
 	end)
 	
-	plr.Character.ChildAdded:Connect(function(child)
+	game.Players.LocalPlayer.Character.ChildAdded:Connect(function(child)
 		if child.Name == "Ragdoll" and open then
 			child.Name = " "
 		end
 	end)
 end
-coroutine.wrap(YLQB_fake_script)()
+coroutine.wrap(OMZZ_fake_script)()
